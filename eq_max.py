@@ -33,3 +33,12 @@ Chromosome 5 = {-3,3}
 
 print("this shit is workin bro")
 
+ '''
+    parents = numpy.empty((num_parents, population.shape[1]))
+    for parent_num in range(num_parents):
+        max_fitness_idx = numpy.where(fitness_val == numpy.max(fitness_val))
+        max_fitness_idx = max_fitness_idx[0][0]
+        parents[parent_num, :] = population[max_fitness_idx, :]
+        fitness_val[max_fitness_idx] = -99999999999
+
+    return parents '''
