@@ -5,12 +5,10 @@ import genetic_algorithm as ga
 
 
 
-
-
 '''
 Problem : Maxmise Output of given equation
 
-Given Equation : 2x + 2y
+Given Equation : x^2 + y^2
 
 Techniques : Evolutionary Algortihm > Genetic Algorithm
 Sub-Techniques Required : 
@@ -91,7 +89,6 @@ def ga_driver(population):
 
         print("Current Generation Statistics : " )
         print("Generation = " + str((i+1)))
-        print("Poluation Lenght : " + str(len(population)))
         print("Elements : " ,population)
         print("Highest Fitness Value = " + str(ga.fitness(ga.function,population[0])))
 
