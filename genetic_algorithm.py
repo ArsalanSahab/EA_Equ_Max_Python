@@ -13,39 +13,67 @@ function = lambda x,y : (x)*2 + (y)*2
 
 ####### Fitness Function #########
 
-def random_fitness(population):
+def fitness(chromosome):
 
-    fitness_val_list = [function(i[0], i[1]) for i in population]
-    return fitness_val_list
+    fitness_val = function(chromosome[0],chromosome[1])
+
+    return fitness_val
 
 ####### Parents Tournament Selection #########
 
-def parents_tournament(population,fitness_scores_list):
+def binary_tournament(parent_a,parent_b):
 
-        selected_parents = []
-        population_size = len(fitness_scores_list)
 
+    if(fitness(parent_a) > fitness(parent_b)):
+
+        return parent_a
+    else :
+
+        return parent_b
+
+######## Crossover #############
+def crossover(parent_a,parent_b):
+
+    offspring = [parent_a[0],parent_b[1]]
+
+    return offspring
     
-        for i in range(0, population_size):
 
-            # Take two parent 
-            parent_1 = random.randint(0, len(fitness_scores_list) - 1)
-            parent_2 = random.randint(0, len(fitness_scores_list) - 1)
+########## Mutation  ###############
 
-            # Compare scores
-            # The parent with the higher fitness wins
-            if fitness_scores_list[parent_1] > fitness_scores_list[parent_2]:
-                ch_winner = population[parent_1]
-            else:
-                ch_winner = population[parent_2]
+def random_ind_gen(chromosome):
 
-            # Add to list
-            selected_parents.append(ch_winner)
+    return random.randint(0, len(chromosome) - 1), random.randint(0, len(chromosome) - 1)
 
-        return selected_parents
+def mutate_population(population):
+
+    mutated_population = []
+
+    for chromosome in population :
+
+        if 0 <= random.uniform(0, 1) <= 0.5:
+
+            mutated_chromosome = mutate_chromosome(chromosome)
+
+            mutate_population.append(mutated_chromosome)
+
+        else :
+
+            mutated_population.append(chromosome)
+
+
+def mutate_chromosome(chromosome,index):
+
+    index_1, index_2 = index
+
+    # Swap members at given indices
+    chromosome[index_1], chromosome[index_2] = chromosome[index_2], chromosome[index_1]
+
+    return chromosome
 
 
 
 
-print(parents_tournament(population,random_fitness(population)))
+
+print(crossover(parents_tournament(population,random_fitness(population)),4))
 
