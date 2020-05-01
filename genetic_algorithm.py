@@ -43,11 +43,18 @@ def crossover(parent_a,parent_b):
 
 def mutate_chromosome(chromosome):
 
-    # Swap members at given indices
-    chromosome[0], chromosome[1] = chromosome[1], chromosome[0]
 
-    return chromosome
+    # If random umber is between 0 and mutation percentage than mutate
+    if 0 <= random.uniform(0, 1) <= 0.5:
+        # Swap members at given indices
+        chromosome[0], chromosome[1] = chromosome[1], chromosome[0]
 
+         return chromosome
+    else :
+
+         return chromosome
+
+   
 
 
 ##### Truncation ########
