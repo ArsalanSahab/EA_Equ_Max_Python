@@ -49,7 +49,7 @@ def mutate_chromosome(chromosome):
         # Swap members at given indices
         chromosome[0], chromosome[1] = chromosome[1], chromosome[0]
 
-         return chromosome
+        return chromosome
     else :
 
          return chromosome
